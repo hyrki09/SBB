@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+@RequestMapping("/question")
 @RequiredArgsConstructor // 애너테이션의 생성자 방식
 @Controller
 public class QuestionController {
@@ -17,7 +18,7 @@ public class QuestionController {
     private final QuestionService questionService;
 
 
-    @GetMapping("/question/list")
+    @GetMapping("/list")
 //    @ResponseBody
     public String list(Model model){
 
@@ -26,7 +27,7 @@ public class QuestionController {
         return "question_list";
     }
 
-    @GetMapping(value = "/question/detail/{id}")
+    @GetMapping(value = "/detail/{id}")
     public String detail(Model model, @PathVariable("id")Integer id){
         Question question = questionService.getQuestion(id);
         model.addAttribute("question", question);
