@@ -1,10 +1,10 @@
-package com.mysite.sbb.answer;
+package com.mysite.springboard.answer;
 
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import com.mysite.sbb.question.Question;
+import com.mysite.springboard.question.Question;
 
 import java.time.LocalDateTime;
 

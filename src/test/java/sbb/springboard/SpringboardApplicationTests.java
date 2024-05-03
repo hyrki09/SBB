@@ -1,9 +1,9 @@
 package sbb.springboard;
 
-import com.mysite.sbb.answer.Answer;
-import com.mysite.sbb.answer.AnswerRepository;
-import com.mysite.sbb.question.Question;
-import com.mysite.sbb.question.QuestionRepository;
+import com.mysite.springboard.answer.Answer;
+import com.mysite.springboard.answer.AnswerRepository;
+import com.mysite.springboard.question.Question;
+import com.mysite.springboard.question.QuestionRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

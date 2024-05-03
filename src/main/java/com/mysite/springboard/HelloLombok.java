@@ -1,4 +1,4 @@
-package com.mysite.sbb;
+package com.mysite.springboard;
 
 
 import lombok.Getter;

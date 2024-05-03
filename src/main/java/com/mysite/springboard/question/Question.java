@@ -1,6 +1,6 @@
-package com.mysite.sbb.question;
+package com.mysite.springboard.question;
 
-import com.mysite.sbb.answer.Answer;
+import com.mysite.springboard.answer.Answer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
