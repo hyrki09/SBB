@@ -1,17 +1,27 @@
 package com.mysite.springboard.question;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
+@RequiredArgsConstructor // 애너테이션의 생성자 방식
 @Controller
 public class QuestionController {
 
+    private final QuestionService questionService;
+
 
     @GetMapping("/question/list")
-    @ResponseBody
-    public String list(){
-        return "question list";
+//    @ResponseBody
+    public String list(Model model){
+
+        List<Question> questionList = this.questionService.getList();
+        model.addAttribute("questionList", questionList);
+        return "question_list";
     }
 }
