@@ -1,9 +1,10 @@
-package sbb.springboard;
+package com.mysite.springboard;
 
 import com.mysite.springboard.answer.Answer;
 import com.mysite.springboard.answer.AnswerRepository;
 import com.mysite.springboard.question.Question;
 import com.mysite.springboard.question.QuestionRepository;
+import com.mysite.springboard.question.QuestionService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class SpringboardApplicationTests {
 
+//	@Autowired
+//	private QuestionRepository questionRepository;
+
 	@Autowired
-	private QuestionRepository questionRepository;
+	private QuestionService questionService;
+
+//	@Autowired
+//	private AnswerRepository answerRepository;
+
+	@Test
+	void testJpa() {
+		for (int i = 1; i <= 300; i++) {
+			String subject = String.format("테스트 데이터입니다.:[%03d]", i);
+			String content = "내용무";
+			this.questionService.create(subject,content);
+		}
+	}
 
 
-	@Autowired
-	private AnswerRepository answerRepository;
+/*
 
 //	Save 테스트
 	@Test
@@ -152,5 +167,6 @@ class SpringboardApplicationTests {
 
 	}
 
+*/
 
 }
