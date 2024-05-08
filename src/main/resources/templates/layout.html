@@ -18,5 +18,8 @@
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 <!-- Bootstrap JS -->
 <script th:src="@{/bootstrap.min.js}"></script>
+<!--상속하는 템플릿은 자바스크립트의 삽입 위치를 신경 쓰지 않아도 되고,
+필요할 경우에 스크립트 블록을 구현하여 자바스크립트를 작성할 수 있다.-->
+<th:block layout:fragment="script"></th:block>
 </body>
 </html>

@@ -36,4 +36,6 @@ public class Question {
     // 질문이 사라지면 답변은 자동으로 사라진다. = CascadeType.REMOVE
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    private LocalDateTime modifyDate;
 }
