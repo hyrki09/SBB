@@ -2,6 +2,7 @@ package com.mysite.springboard.question;
 
 
 import com.mysite.springboard.DataNotFoundException;
+import com.mysite.springboard.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.config.ConfigDataLocationNotFoundException;
 import org.springframework.data.domain.Page;
@@ -38,11 +39,12 @@ public class QuestionService {
         }
     }
 
-    public void create(String subject, String content) {
+    public void create(String subject, String content, SiteUser author) {
         Question question = new Question();
         question.setSubject(subject);
         question.setContent(content);
         question.setCreateDate(LocalDateTime.now());
+        question.setAuthor(author);
         this.questionRepository.save(question);
     }
 }

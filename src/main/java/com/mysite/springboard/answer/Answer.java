@@ -1,6 +1,7 @@
 package com.mysite.springboard.answer;
 
 
+import com.mysite.springboard.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,4 +25,7 @@ public class Answer {
 
     @ManyToOne //    N:1 관계를 나타낼 수 있다.
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
 }
