@@ -2,13 +2,20 @@ package com.mysite.springboard;
 
 import com.mysite.springboard.answer.Answer;
 import com.mysite.springboard.answer.AnswerRepository;
+import com.mysite.springboard.answer.AnswerService;
 import com.mysite.springboard.question.Question;
 import com.mysite.springboard.question.QuestionRepository;
 import com.mysite.springboard.question.QuestionService;
+import com.mysite.springboard.user.SiteUser;
+import com.mysite.springboard.user.UserService;
+import groovy.util.logging.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -17,7 +24,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 @SpringBootTest
 class SpringboardApplicationTests {
 
@@ -27,16 +33,35 @@ class SpringboardApplicationTests {
 	@Autowired
 	private QuestionService questionService;
 
-//	@Autowired
-//	private AnswerRepository answerRepository;
+	@Autowired
+	private AnswerRepository answerRepository;
 
+	@Autowired
+	private AnswerService answerService;
+
+	@Autowired
+	private UserService userService;
+
+	private final Logger LOGGER = LoggerFactory.getLogger(SpringboardApplicationTests.class);
 	@Test
 	void testJpa() {
-		for (int i = 1; i <= 300; i++) {
-			String subject = String.format("테스트 데이터입니다.:[%03d]", i);
-			String content = "내용무";
-			this.questionService.create(subject,content,null);
+		Question question = questionService.getQuestion(311);
+
+		SiteUser siteUser = new SiteUser();
+//		Page<Answer> list = answerService.getList(question,1);
+//		Page<Answer> list1 = answerService.getList(question, 1);
+//		List<Answer> allByQuestion = answerRepository.findAllByQuestion(question);
+
+		SiteUser user = userService.getUser("testkim4");
+		int cnt = 1;
+
+		for (int i = 0; i <50; i++) {
+//			LOGGER.info("answer{} : {}",cnt,answer.getContent() );
+//			cnt++;
+			answerService.create(question,"answerTest" +i, user);
 		}
+
+//		assertEquals(5, list1.stream().count());
 	}
 
 

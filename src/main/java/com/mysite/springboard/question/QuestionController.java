@@ -1,6 +1,8 @@
 package com.mysite.springboard.question;
 
+import com.mysite.springboard.answer.Answer;
 import com.mysite.springboard.answer.AnswerForm;
+import com.mysite.springboard.answer.AnswerService;
 import com.mysite.springboard.user.SiteUser;
 import com.mysite.springboard.user.UserService;
 import jakarta.validation.Valid;
@@ -25,6 +27,7 @@ public class QuestionController {
 
     private final QuestionService questionService;
     private final UserService userService;
+    private final AnswerService answerService;
 
 
     @GetMapping("/list")
@@ -39,9 +42,14 @@ public class QuestionController {
     }
 
     @GetMapping(value = "/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
+    public String detail(Model model,
+                         @RequestParam(value="page", defaultValue = "0")int page,
+                         @PathVariable("id") Integer id, AnswerForm answerForm) {
         Question question = questionService.getQuestion(id);
+        Page<Answer> answerList = answerService.getList(question,page);
         model.addAttribute("question", question);
+        model.addAttribute("answerList", answerList);
+
         return "question_detail";
     }
 
